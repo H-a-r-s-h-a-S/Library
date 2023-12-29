@@ -1,0 +1,9 @@
+{
+	"donations": 50,
+	"customers": 200,
+	"locations": 1500,
+	"rentals": 150,
+	"data start": "-1y",
+	"data end": "today",
+	"password": ""
+}
