@@ -79,7 +79,7 @@ create table if not exists `customers` (
 	CONSTRAINT UC_CUSTOMERS_ID UNIQUE (`id`, `name`, `phone`, `email`),
 	foreign key (`plan_id`) references `plans`(`id`)
 		on update cascade
-		on delete cascade
+		on delete set null
 )
 ENGINE = InnoDB
 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ;
@@ -95,10 +95,10 @@ create table if not exists `income` (
 	`plan_id` int,
 	foreign key (`customer_id`) references `customers`(`id`)
 		on update cascade
-		on delete cascade,
+		on delete set null,
 	foreign key(`plan_id`) references `plans`(`id`)
 		on update cascade
-		on delete cascade
+		on delete set null
 ) 
 ENGINE = InnoDB
 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ;
@@ -115,10 +115,10 @@ create table if not exists `membership_history` (
 	`end_date` date,
 	foreign key (`customer_id`) references `customers`(`id`)
 		on update cascade
-		on delete cascade,
+		on delete set null,
 	foreign key (`plan_id`) references `plans`(`id`)
 		on update cascade
-		on delete cascade
+		on delete set null
 )
 ENGINE = InnoDB
 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ;
@@ -208,7 +208,7 @@ create table if not exists `locations` (
 	`book_id` int,
 	CONSTRAINT UC_LOCATIONS_ID UNIQUE (`id`, `rack_no`, `shelf_no`, `row_no`),
 	foreign key (`book_id`) references `books`(`id`)
-		on delete cascade
+		on delete set null
 		on update cascade
 )
 ENGINE = InnoDB
@@ -228,10 +228,10 @@ create table if not exists `rentals` (
 	CONSTRAINT UC_RENTALS_ID UNIQUE (`id`),
 	foreign key (`book_id`) references `books`(`id`)
 		on update cascade
-		on delete cascade,
+		on delete set null,
 	foreign key (`customer_id`) references `customers`(`id`)
 		on update cascade
-		on delete cascade
+		on delete set null
 )
 ENGINE = InnoDB
 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ;
